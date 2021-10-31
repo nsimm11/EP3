@@ -10,6 +10,8 @@ from PySide2.QtGui import QGuiApplication, QIcon
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, QTimer, QUrl
 
+#import i2cTester
+
 
 class MainWindow(QObject):
     def __init__(self, data):
@@ -99,6 +101,11 @@ class MainWindow(QObject):
         print(self.data)
         Settings.to_excel(excel_name, sheet_name = "Settings")
         return True
+
+    @Slot(str, result=list)
+    def getTemp(self, s):
+        #temps = i2cTester.returnTemp()
+        return [20.00, 25.00]
 
 if __name__ == "__main__":
 

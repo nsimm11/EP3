@@ -11,6 +11,8 @@ Item {
         onTriggered: {
             labelDate.text = Qt.formatDate(new Date(), "MM/dd/yy");
             labelTime.text = Qt.formatTime(new Date(), "hh:mm:ss");
+            tTemp1.text = win.getTemp("Si")[0]
+            tTemp2.text = win.getTemp("Si")[1]
         }
     }
 
@@ -39,6 +41,25 @@ Item {
             anchors.leftMargin: 50
             anchors.bottomMargin: 50
             anchors.topMargin: 30
+
+            Text {
+                id: tTemp1
+                x: 374
+                y: 113
+                width: 416
+                height: 280
+                text: qsTr("Temp1")
+                font.pixelSize: 60
+            }
+            Text {
+                id: tTemp2
+                x: 374
+                y: 313
+                width: 416
+                height: 280
+                text: qsTr("Temp2")
+                font.pixelSize: 60
+            }
 
         }
 
