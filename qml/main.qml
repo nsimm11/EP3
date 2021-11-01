@@ -1,10 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Window 2.11
-import QtQuick.Controls 2.11
-import QtGraphicalEffects 1.11
+import QtQuick.Controls 2.4
+import QtGraphicalEffects 1.0
 import QtQuick.Dialogs 1.3
 import "controls"
-import QtQml 2.15
+import QtQml 2.11
 
 //Initial Settings window first
 import QtQuick.Layouts 1.3

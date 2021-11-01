@@ -44,12 +44,12 @@ def returnTemp():
     tc1.set_i2c_address(tc1Address)
     tc2.set_i2c_address(tc2Address)
 
-    time.sleep(1.5)
+    time.sleep(0.4)
 
     tc1.write("R")
     tc2.write("R")
 
-    time.sleep(1.5)
+    time.sleep(0.4)
 
     tc1Response = tc1.get_response(raw_data=tc1.file_read.read(31))
     tc2Response = tc2.get_response(raw_data=tc2.file_read.read(31))

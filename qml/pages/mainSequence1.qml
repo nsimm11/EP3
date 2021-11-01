@@ -1,8 +1,8 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.11
+import QtQuick.Controls 2.4
 import "../../qml/controls"
 import QtQuick.Layouts 1.0
-import QtQml 2.15
+import QtQml 2.11
 
 Item {
     id: item1
@@ -11,8 +11,10 @@ Item {
         onTriggered: {
             labelDate.text = Qt.formatDate(new Date(), "MM/dd/yy");
             labelTime.text = Qt.formatTime(new Date(), "hh:mm:ss");
-            tTemp1.text = win.getTemp("Si")[0]
-            tTemp2.text = win.getTemp("Si")[1]
+            tTemp1.text = win.getTemp1("Si")
+            tTemp2.text = win.getTemp2("Si")
+            tTestTime.text = win.submitDataLine("Si")
+            
         }
     }
 
@@ -58,6 +60,15 @@ Item {
                 width: 416
                 height: 280
                 text: qsTr("Temp2")
+                font.pixelSize: 60
+            }
+            Text {
+                id: tTestTime
+                x: 374
+                y: 513
+                width: 416
+                height: 280
+                text: qsTr("TestTime")
                 font.pixelSize: 60
             }
 

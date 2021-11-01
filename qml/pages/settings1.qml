@@ -1,8 +1,8 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.11
+import QtQuick.Controls 2.4
 import "../../qml/controls"
 import QtQuick.Layouts 1.0
-import QtQml 2.15
+import QtQml 2.11
 
 
 
@@ -67,9 +67,9 @@ Item {
                             anchors.bottom: parent.bottom
                             anchors.bottomMargin: 27
                             onClicked: {
-                                win.getSubmitField(["tfBatchID", tfBatchID.text])
-                                win.getSubmitField(["tfDate", tfDate.text])
-                                win.getSubmitField(["tfNotes", tfNotes.text])
+                                win.getBatchId(tfBatchID.text)
+                                win.getDate(tfDate.text)
+                                win.getNotes(tfNotes.text)
                             }
                         }
 

@@ -5,32 +5,27 @@ from pathlib import Path
 import sys
 import datetime
 import pandas as pd
+import time
 
 from PySide2.QtGui import QGuiApplication, QIcon
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, QTimer, QUrl
 
-import i2cTester
+#import i2cTester
 
 
 class MainWindow(QObject):
-    def __init__(self, d):
+    def __init__(self, data):
         QObject.__init__(self)
-        newPath = ""
         self.settings = {
             "Batch_ID": ["B1"],
             "Date": [""],
             "Notes": [""],
-            "swLight": ["ON"],
-            "start": datetime.datetime.now()}
-        
-        self.dataHolder = {
-            "time": 0,
-            "temp1": 20,
-            "temp2": 20
-                           }
-        
-        self.data = pd.DataFrame()
+            "swLight": ["ON"]}
+        self.batchID = ""
+        self.Date = ""
+        self.Notes = ""
+        self.data = data
 
     @Slot(list, result=bool)
     def getBold(self, s):
@@ -57,19 +52,17 @@ class MainWindow(QObject):
         print(s)
         return "SUBMIT"
 
-    @Slot(str, result=bool)
-    def getBatchId(self, s):
-        self.settings["Batch_ID"] = [s]
-        return True
-    
-    @Slot(str, result=bool)
-    def getDate(self, s):
-        self.settings["Date"] = [s]
-        return True
-    
-    @Slot(str, result=bool)
-    def getNotes(self, s):
-        self.settings["Notes"] = [s]
+    @Slot(list, result=bool)
+    def getSubmitField(self, lst):
+        if(lst[0] == "tfBatchID"):
+            self.settings["Batch_ID"] = [lst[1]]
+        elif(lst[0] == "tfDate"):
+            self.settings["Date"] = [lst[1]]
+        elif(lst[0] == "tfNotes"):
+            self.settings["Notes"] = [lst[1]]
+        else:
+            print("failed")
+            return False
         return True
 
     @Slot(str, result=str)
@@ -104,39 +97,16 @@ class MainWindow(QObject):
 
     @Slot(str, result=bool)
     def submitSettings(self, conf):
-        newPath = "Test_Data/" + str(self.settings["Batch_ID"][0])
-        i = 1
-        while(os.path.exists(newPath)):
-            newPath = newPath + str(i)
-            i = i + 1
-        os.mkdir(newPath)
-        self.newPath = newPath[10:]
         Settings = pd.DataFrame.from_dict(self.settings)
-        excel_name = "Test_Data/" + self.newPath + "/Settings.csv"
-        Settings.to_csv(excel_name)
+        excel_name = "Test_Data/" + str(self.settings["Batch_ID"][0]) + ".xlsx"
+        print(self.data)
+        Settings.to_excel(excel_name, sheet_name = "Settings")
         return True
 
-    @Slot(str, result=str)
-    def getTemp1(self, s):
-        temps = i2cTester.returnTemp()
-        self.dataHolder["temp1"] = temps[0]
-        return str(temps[0])
-    
-    @Slot(str, result=str)
-    def getTemp2(self, s):
-        temps = i2cTester.returnTemp()
-        self.dataHolder["temp2"] = temps[1]
-        return str(temps[1])
-    @Slot(str, result=float)
-    
-    def submitDataLine(self, s):
-        curTime = (datetime.datetime.now() - self.settings["start"]).total_seconds()
-        self.dataHolder["time"] = curTime
-        self.data = self.data.append(self.dataHolder, ignore_index=True)
-        if int(curTime) % 60 ==  0:
-            excel_name = "Test_Data/" + self.newPath + "/Data.csv"
-            self.data.to_csv(excel_name)
-        return curTime
+    @Slot(str, result=list)
+    def getTemp(self, s):
+        #temps = i2cTester.returnTemp()
+        return [20.00, 25.00]
 
 if __name__ == "__main__":
 
@@ -148,6 +118,7 @@ if __name__ == "__main__":
 
     # Get Context -- Send/Recieve data from QML
     win = MainWindow(data)
+    print("moving on")
     engine.rootContext().setContextProperty("win", win)
 
     # Set Additional App Info
