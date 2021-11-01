@@ -5,6 +5,8 @@ from pathlib import Path
 import sys
 import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 from PySide2.QtGui import QGuiApplication, QIcon
 from PySide2.QtQml import QQmlApplicationEngine
@@ -31,7 +33,17 @@ class MainWindow(QObject):
                            }
         
         self.data = pd.DataFrame()
-
+    
+    def createTempPlot(self):
+        plt.plot(np.array(self.data["time"]), np.array(self.data["temp1"]), label="TC 1", c="g")
+        plt.plot(np.array(self.data["time"]), np.array(self.data["temp2"]), label="TC 2", c="b")
+        plt.xlabel("Time [s]")
+        plt.ylabel("Temperature [C]")
+        plt.legend()
+        plt.savefig("qml/pages/TempPlot.jpg")
+        plt.close()
+        return True
+    
     @Slot(list, result=bool)
     def getBold(self, s):
         if s[0] == s[1]:
@@ -127,16 +139,18 @@ class MainWindow(QObject):
         temps = i2cTester.returnTemp()
         self.dataHolder["temp2"] = temps[1]
         return str(temps[1])
-    @Slot(str, result=float)
     
+    @Slot(str, result=str)
     def submitDataLine(self, s):
         curTime = (datetime.datetime.now() - self.settings["start"]).total_seconds()
+        print(curTime)
         self.dataHolder["time"] = curTime
         self.data = self.data.append(self.dataHolder, ignore_index=True)
-        if int(curTime) % 60 ==  0:
+        if int(curTime) % 60 ==  0 or not os.path.isfile("qml/pages/TempPlot.jpg"):
             excel_name = "Test_Data/" + self.newPath + "/Data.csv"
             self.data.to_csv(excel_name)
-        return curTime
+            self.createTempPlot()
+        return str(curTime)
 
 if __name__ == "__main__":
 

@@ -71,6 +71,22 @@ Item {
                 text: qsTr("TestTime")
                 font.pixelSize: 60
             }
+            
+            Button {
+                id: bNextPage4
+                x: 968
+                y: 435
+                text: qsTr("Next")
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                font.pointSize: 15
+                anchors.rightMargin: 26
+                anchors.bottomMargin: 20
+                onClicked: {
+                    onClicked: {
+                        stackView.push(Qt.resolvedUrl("mainSequence2.qml"))
+                    }}
+            }
 
         }
 

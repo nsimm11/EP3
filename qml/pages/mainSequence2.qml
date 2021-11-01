@@ -13,6 +13,8 @@ Item {
         onTriggered: {
             labelDate.text = Qt.formatDate(new Date(), "MM/dd/yy");
             labelTime.text = Qt.formatTime(new Date(), "hh:mm:ss");
+            tempPlot.source = ""
+            tempPlot.source = "TempPlot.jpg"
         }
     }
 
@@ -41,6 +43,12 @@ Item {
             anchors.leftMargin: 50
             anchors.bottomMargin: 50
             anchors.topMargin: 30
+            
+            Image {
+                id: tempPlot
+                source: "TempPlot.jpg"
+                cache: false
+            }
 
         }
 
