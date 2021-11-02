@@ -46,46 +46,129 @@ Item {
 
             Text {
                 id: tTemp1
-                x: 374
-                y: 113
-                width: 416
-                height: 280
+                x: 209
+                y: 91
+                width: 198
+                height: 48
+                color: "#ffffff"
                 text: qsTr("Temp1")
-                font.pixelSize: 60
+                font.pixelSize: 35
             }
             Text {
                 id: tTemp2
-                x: 374
-                y: 313
-                width: 416
-                height: 280
+                x: 212
+                y: 145
+                width: 192
+                height: 52
+                color: "#ffffff"
                 text: qsTr("Temp2")
-                font.pixelSize: 60
+                font.pixelSize: 35
             }
             Text {
                 id: tTestTime
-                x: 374
-                y: 513
-                width: 416
-                height: 280
+                x: 209
+                y: 35
+                width: 276
+                height: 48
+                color: "#ffffff"
                 text: qsTr("TestTime")
-                font.pixelSize: 60
+                font.pixelSize: 35
             }
-            
-            Button {
-                id: bNextPage4
-                x: 968
-                y: 435
-                text: qsTr("Next")
-                anchors.right: parent.right
+
+            Text {
+                id: tTemp3
+                x: 8
+                y: 91
+                width: 198
+                height: 48
+                color: "#ffffff"
+                text: qsTr("Temp 1:")
+                font.pixelSize: 35
+            }
+
+            Text {
+                id: tTemp4
+                x: 11
+                y: 145
+                width: 192
+                height: 52
+                color: "#ffffff"
+                text: qsTr("Temp 2:")
+                font.pixelSize: 35
+            }
+
+            Text {
+                id: tTestTime1
+                x: 8
+                y: 35
+                width: 276
+                height: 48
+                color: "#ffffff"
+                text: qsTr("Test Time:")
+                font.pixelSize: 35
+            }
+
+            Row {
+                id: row
+                x: 329
+                y: 767
                 anchors.bottom: parent.bottom
-                font.pointSize: 15
-                anchors.rightMargin: 26
-                anchors.bottomMargin: 20
-                onClicked: {
+                spacing: 20
+                anchors.bottomMargin: 8
+
+                Button {
+                    id: bNextPage4
+                    x: 50
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 1")
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 0
+                    font.pointSize: 15
                     onClicked: {
-                        stackView.push(Qt.resolvedUrl("mainSequence2.qml"))
-                    }}
+                        onClicked: {
+                            stackView.push(Qt.resolvedUrl("mainSequence1.qml"))
+                        }}
+                }
+
+                Button {
+                    id: bNextPage5
+                    x: 308
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 2")
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            stackView.push(Qt.resolvedUrl("mainSequence2.qml"))
+                        }}
+                }
+
+                Button {
+                    id: bNextPage6
+                    x: 566
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 3")
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            stackView.push(Qt.resolvedUrl("mainSequence3.qml"))
+                        }}
+                }
+
+                Button {
+                    id: bNextPage7
+                    x: 824
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 4")
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            stackView.push(Qt.resolvedUrl("mainSequence4.qml"))
+                        }}
+                }
             }
 
         }
@@ -177,6 +260,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.5;height:700;width:1200}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:1020;width:1850}
 }
 ##^##*/

@@ -52,7 +52,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.DemiBold
-                anchors.topMargin: 40
+                anchors.topMargin: 172
                 anchors.horizontalCenterOffset: 0
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.wordSpacing: 0
@@ -66,10 +66,10 @@ Item {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.rightMargin: 394
-                anchors.leftMargin: 394
-                anchors.bottomMargin: 270
-                anchors.topMargin: 166
+                anchors.rightMargin: 734
+                anchors.leftMargin: 734
+                anchors.bottomMargin: 451
+                anchors.topMargin: 259
                 font.bold: true
                 font.pointSize: 25
                 onClicked: {
@@ -166,6 +166,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.25;height:700;width:1200}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:1020;width:1850}
 }
 ##^##*/

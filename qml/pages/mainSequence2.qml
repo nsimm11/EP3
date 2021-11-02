@@ -26,6 +26,10 @@ Item {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 0
+        anchors.bottomMargin: 0
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
         anchors.horizontalCenter: parent.horizontalCenter
         property bool fileCheck: false
 
@@ -46,8 +50,108 @@ Item {
             
             Image {
                 id: tempPlot
+                x: 120
+                anchors.top: parent.top
+                source: "TempPlot.jpg"
+                anchors.topMargin: 94
+                cache: false
+            }
+
+            Text {
+                id: text1
+                x: 299
+                width: 282
+                height: 46
+                color: "#ffffff"
+                text: qsTr("Temperature Plot")
+                anchors.top: parent.top
+                font.pixelSize: 35
+                horizontalAlignment: Text.AlignHCenter
+                anchors.topMargin: 42
+            }
+
+            Row {
+                id: row
+                x: 329
+                y: 767
+                anchors.bottom: parent.bottom
+                spacing: 20
+                Button {
+                    id: bNextPage4
+                    x: 50
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 1")
+                    anchors.bottom: parent.bottom
+                    font.pointSize: 15
+                    onClicked: {
+                                    onClicked: {
+                                        stackView.push(Qt.resolvedUrl("mainSequence1.qml"))
+                                    }}
+                    anchors.bottomMargin: 0
+                }
+
+                Button {
+                    id: bNextPage5
+                    x: 308
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 2")
+                    font.pointSize: 15
+                    onClicked: {
+                                    onClicked: {
+                                        stackView.push(Qt.resolvedUrl("mainSequence2.qml"))
+                                    }}
+                }
+
+                Button {
+                    id: bNextPage6
+                    x: 566
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 3")
+                    font.pointSize: 15
+                    onClicked: {
+                                    onClicked: {
+                                        stackView.push(Qt.resolvedUrl("mainSequence3.qml"))
+                                    }}
+                }
+
+                Button {
+                    id: bNextPage7
+                    x: 824
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 4")
+                    font.pointSize: 15
+                    onClicked: {
+                                    onClicked: {
+                            stackView.push(Qt.resolvedUrl("mainSequence4.qml"))
+                        }}
+                }
+                anchors.bottomMargin: 8
+            }
+
+            Image {
+                id: tempPlot1
+                x: 990
+                anchors.top: parent.top
                 source: "TempPlot.jpg"
                 cache: false
+                anchors.topMargin: 94
+            }
+
+            Text {
+                id: text2
+                x: 1169
+                width: 282
+                height: 46
+                color: "#ffffff"
+                text: qsTr("Different Plot")
+                anchors.top: parent.top
+                font.pixelSize: 35
+                horizontalAlignment: Text.AlignHCenter
+                anchors.topMargin: 42
             }
 
         }
@@ -139,6 +243,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.5;height:700;width:1200}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:1020;width:1850}D{i:4}D{i:5}D{i:6}
 }
 ##^##*/

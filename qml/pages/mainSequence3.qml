@@ -42,6 +42,68 @@ Item {
             anchors.bottomMargin: 50
             anchors.topMargin: 30
 
+            Row {
+                id: row
+                x: 329
+                y: 767
+                anchors.bottom: parent.bottom
+                Button {
+                    id: bNextPage4
+                    x: 50
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 1")
+                    anchors.bottom: parent.bottom
+                    font.pointSize: 15
+                    onClicked: {
+                                                onClicked: {
+                                                    stackView.push(Qt.resolvedUrl("mainSequence1.qml"))
+                                                }}
+                    anchors.bottomMargin: 0
+                }
+
+                Button {
+                    id: bNextPage5
+                    x: 308
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 2")
+                    font.pointSize: 15
+                    onClicked: {
+                                                onClicked: {
+                                                    stackView.push(Qt.resolvedUrl("mainSequence2.qml"))
+                                                }}
+                }
+
+                Button {
+                    id: bNextPage6
+                    x: 566
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 3")
+                    font.pointSize: 15
+                    onClicked: {
+                                                onClicked: {
+                                                    stackView.push(Qt.resolvedUrl("mainSequence3.qml"))
+                                                }}
+                }
+
+                Button {
+                    id: bNextPage7
+                    x: 824
+                    width: 258
+                    height: 40
+                    text: qsTr("Page 4")
+                    font.pointSize: 15
+                    onClicked: {
+                                                onClicked: {
+                                        stackView.push(Qt.resolvedUrl("mainSequence4.qml"))
+                                    }}
+                }
+                spacing: 20
+                anchors.bottomMargin: 8
+            }
+
         }
 
         Rectangle {
@@ -131,6 +193,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.5;height:700;width:1200}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:1020;width:1850}D{i:4}
 }
 ##^##*/
