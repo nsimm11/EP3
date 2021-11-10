@@ -50,436 +50,550 @@ Item {
                 property bool isClose3: false
 
                 Text {
-                id: text2
-                y: 10
-                height: 43
-                color: "#47ff25"
-                text: qsTr("Settings - Component Settings")
-                anchors.left: parent.left
-                anchors.right: parent.right
-                font.pixelSize: 20
-                anchors.leftMargin: 12
-                anchors.rightMargin: 1596
-                font.bold: true
-            }
-
-            RadioButton {
-                id: rbhour12
-                x: 511
-                y: 100
-                height: 59
-                display: AbstractButton.TextOnly
-                font.pointSize: 12
-                onToggled: {
-                     rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour12.text])
-                     rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour12.text])
-                     rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour12.text])
+                    id: text2
+                    y: 10
+                    height: 43
+                    color: "#47ff25"
+                    text: qsTr("Settings - Component Settings")
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    font.pixelSize: 20
+                    anchors.leftMargin: 12
+                    anchors.rightMargin: 1596
+                    font.bold: true
                 }
-            }
 
-            RadioButton {
-                id: rbhour6
-                x: 265
-                y: 100
-                height: 59
-                font.pointSize: 12
-                onToggled: {
-                     rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour6.text])
-                     rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour6.text])
-                     rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour6.text])
-                }
-            }
-
-            RadioButton {
-                id: rbhour3
-                x: 393
-                y: 100
-                height: 59
-                font.pointSize: 12
-                onToggled: {
-                     rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour3.text])
-                     rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour3.text])
-                     rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour3.text])
-                }
-            }
-
-            Slider {
-                id: sWaveLength
-                x: 653
-                y: 90
-                width: 301
-                height: 87
-                value: 0.25
-                onValueChanged: {
-                   tWaveLength.text = win.getValueWaveLength(sWaveLength.value)
-                }
-            }
-
-            Switch {
-                id: swLight
-                x: 36
-                y: 97
-                height: 65
-                text: qsTr("")
-                display: AbstractButton.IconOnly
-                checked: false
-                font.pointSize: 12
-                ButtonStyle {
-                    label: {
-                        color: "white"
+                RadioButton {
+                    id: rbhour12
+                    x: 511
+                    y: 97
+                    height: 59
+                    display: AbstractButton.TextOnly
+                    font.pointSize: 12
+                    onToggled: {
+                        rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour12.text])
+                        rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour12.text])
+                        rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour12.text])
                     }
                 }
-                onToggled: {
-                    tLightOF.text = win.getOF(["swLight", tLightOF.text])
+
+                RadioButton {
+                    id: rbhour6
+                    x: 265
+                    y: 97
+                    height: 59
+                    font.pointSize: 12
+                    onToggled: {
+                        rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour6.text])
+                        rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour6.text])
+                        rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour6.text])
+                    }
                 }
-            }
 
-            Text {
-                id: tLWLength
-                x: 667
-                y: 65
-                width: 179
-                height: 31
-                color: "#47ff25"
-                text: qsTr(" Light Wave Length:")
-                font.pixelSize: 20
-            }
+                RadioButton {
+                    id: rbhour3
+                    x: 393
+                    y: 97
+                    height: 59
+                    font.pointSize: 12
+                    onToggled: {
+                        rbhour3.font.bold = win.getBold([ rbhour3.text,  rbhour3.text])
+                        rbhour6.font.bold = win.getBold([ rbhour6.text,  rbhour3.text])
+                        rbhour12.font.bold = win.getBold([ rbhour12.text,  rbhour3.text])
+                    }
+                }
 
-            Text {
-                id: text5
-                x: 46
-                y: 58
-                width: 76
-                height: 45
-                color: "#47ff25"
-                text: qsTr("Light Switch")
-                font.pixelSize: 20
-            }
+                Slider {
+                    id: sWaveLength
+                    x: 653
+                    y: 92
+                    width: 301
+                    height: 87
+                    value: 0.25
+                    onValueChanged: {
+                        tWaveLength.text = win.getValueWaveLength(sWaveLength.value)
+                    }
+                }
 
-            Button {
-                id: bNextPage4
-                x: 968
-                y: 435
-                text: qsTr("Submit Settings")
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                font.pointSize: 15
-                anchors.rightMargin: 26
-                anchors.bottomMargin: 20
-                onClicked: {
+                Switch {
+                    id: swLight
+                    x: 36
+                    y: 97
+                    height: 65
+                    text: qsTr("")
+                    display: AbstractButton.IconOnly
+                    checked: false
+                    font.pointSize: 12
+                    ButtonStyle {
+                        label: {
+                            color: "white"
+                        }
+                    }
+                    onToggled: {
+                        tLightOF.text = win.getOF(["swLight", tLightOF.text])
+                    }
+                }
+
+                Text {
+                    id: tLWLength
+                    x: 667
+                    y: 58
+                    width: 179
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr(" Light Wave Length:")
+                    font.pixelSize: 20
+                }
+
+                Text {
+                    id: text5
+                    x: 46
+                    y: 58
+                    width: 76
+                    height: 45
+                    color: "#47ff25"
+                    text: qsTr("Light Switch")
+                    font.pixelSize: 20
+                }
+
+                Button {
+                    id: bNextPage4
+                    x: 968
+                    y: 435
+                    text: qsTr("Submit Settings")
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    font.pointSize: 15
+                    anchors.rightMargin: 26
+                    anchors.bottomMargin: 20
                     onClicked: {
-                        win.submitSettings(bNextPage4.text)
-                        stackView.push(Qt.resolvedUrl("mainSequence1.qml"))
-                    }}
-            }
+                        onClicked: {
+                            win.submitSettings(bNextPage4.text)
+                            stackView.push(Qt.resolvedUrl("mainSequence1.qml"))
+                        }}
+                }
 
-            Text {
-                id: tWaveLength
-                x: 869
-                y: 67
-                width: 60
-                height: 31
-                color: "#fffefe"
-                text: qsTr("720 nm")
-                font.pixelSize: 16
-            }
+                Text {
+                    id: tWaveLength
+                    x: 869
+                    y: 58
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("720 nm")
+                    font.pixelSize: 16
+                }
 
-            Switch {
-                id: swFan
-                x: 9
-                y: 229
-                width: 129
-                height: 66
-                font.pointSize: 12
-                checked: false
-                onToggled: {
-                    tFanOF.text = win.getOF(tFanOF.text)
+                Switch {
+                    id: swFan
+                    x: 9
+                    y: 229
+                    width: 129
+                    height: 66
+                    font.pointSize: 12
+                    checked: false
+                    onToggled: {
+                        tFanOF.text = win.getOF(tFanOF.text)
+                    }
+                }
+
+                Text {
+                    id: text8
+                    y: 193
+                    height: 45
+                    color: "#47ff25"
+                    text: qsTr("Fan Switch")
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    font.pixelSize: 20
+                    anchors.rightMargin: 1654
+                    anchors.leftMargin: 20
+                }
+
+                RadioButton {
+                    id: rbFanSpeedH
+                    x: 260
+                    y: 224
+                    width: 61
+                    height: 62
+                    anchors.leftMargin: 0
+                    font.pointSize: 12
+                    onToggled: {
+                        tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedH.text])
+                        tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedH.text])
+                        tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedH.text])
+                    }
+                }
+
+                RadioButton {
+                    id: rbFanSpeedM
+                    x: 382
+                    y: 224
+                    width: 67
+                    height: 62
+                    anchors.leftMargin: 0
+                    font.pointSize: 12
+                    onToggled: {
+                        tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedM.text])
+                        tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedM.text])
+                        tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedM.text])
+                    }
+                }
+
+                RadioButton {
+                    id: rbFanSpeedL
+                    x: 499
+                    y: 224
+                    width: 60
+                    height: 62
+                    anchors.leftMargin: 0
+                    font.pointSize: 12
+                    onToggled: {
+                        tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedL.text])
+                        tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedL.text])
+                        tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedL.text])
+                    }
+                }
+
+
+                Text {
+                    id: text9
+                    x: 178
+                    y: 193
+                    width: 149
+                    height: 44
+                    color: "#47ff25"
+                    text: qsTr("Fan Speed")
+                    font.pixelSize: 20
+                }
+
+                Slider {
+                    id: slider2
+                    x: 667
+                    y: 215
+                    width: 296
+                    height: 93
+                    value: 0.80
+                }
+
+                Text {
+                    id: text10
+                    x: 667
+                    y: 199
+                    width: 212
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Mass Flow Controller Setpoint:")
+                    font.pixelSize: 20
+                }
+
+                Text {
+                    id: text11
+                    x: 954
+                    y: 199
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr(" 1 L/min")
+                    font.pixelSize: 16
+                }
+
+
+                Text {
+                    id: text13
+                    x: 257
+                    y: 58
+                    width: 149
+                    height: 44
+                    color: "#47ff25"
+                    text: qsTr(" Light Cycle Length")
+                    font.pixelSize: 20
+                }
+
+
+
+                Slider {
+                    id: sChillerSetpoint
+                    y: 349
+                    width: 349
+                    height: 93
+                    anchors.left: parent.left
+                    anchors.leftMargin: 81
+                    value: 0.5
+                    onValueChanged: {
+                        tChillerSetpoint.text = win.getValueChillerTemp(sChillerSetpoint.value)
+                    }
+                }
+
+                Text {
+                    id: tChillerTitle
+                    y: 325
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Chiller Setpoint:")
+                    anchors.left: parent.left
+                    font.pixelSize: 20
+                    anchors.leftMargin: 87
+                }
+
+                Slider {
+                    id: sHeaterSetpoint
+                    x: 527
+                    y: 352
+                    width: 369
+                    height: 88
+                    anchors.right: parent.right
+                    anchors.rightMargin: 854
+                    value: 0.5
+                    onValueChanged: {
+                        tHeaterSetpoint.text = win.getValueHeaterTemp(sHeaterSetpoint.value)
+                    }
+                }
+
+                Text {
+                    id: tHeaterTitle
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Heater Setpoint:")
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    font.pixelSize: 20
+                    anchors.leftMargin: 667
+                    anchors.topMargin: 331
+                }
+
+                Text {
+                    id: tHeaterSetpoint
+                    x: 879
+                    y: 334
+                    width: 60
+                    height: 25
+                    color: "#fffefe"
+                    text: qsTr("100 C")
+                    anchors.right: parent.right
+                    font.pixelSize: 16
+                    anchors.rightMargin: 811
+                }
+
+                Text {
+                    id: tChillerSetpoint
+                    x: 256
+                    y: 328
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("2 C")
+                    font.pixelSize: 16
+                }
+
+                Text {
+                    id: tLight12
+                    x: 317
+                    y: 118
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("12 Hour")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                }
+
+                Text {
+                    id: tLight3
+                    x: 563
+                    y: 118
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("3 Hour")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                }
+
+                Text {
+                    id: tLight6
+                    x: 451
+                    y: 118
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("6 Hour")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                }
+
+                Text {
+                    id: tLightOF
+                    x: 116
+                    y: 118
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("OFF")
+                    font.pixelSize: 16
+                }
+
+                Text {
+                    id: tFanOF
+                    x: 116
+                    y: 250
+                    width: 60
+                    height: 36
+                    color: "#fffefe"
+                    text: qsTr("OFF")
+                    font.pixelSize: 16
+                }
+
+                Text {
+                    id: tFanSpeedH
+                    x: 335
+                    y: 243
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("High")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                }
+
+                Text {
+                    id: tFanSpeedM
+                    x: 441
+                    y: 243
+                    width: 70
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("Medium")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                }
+
+                Text {
+                    id: tFanSpeedL
+                    x: 563
+                    y: 242
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("Low")
+                    font.pixelSize: 16
+                    anchors.leftMargin: 0
+                    rotation: -1.874
+                }
+
+                Text {
+                    id: text3
+                    y: 448
+                    height: 43
+                    color: "#47ff25"
+                    text: qsTr("Settings - Cycle Settings")
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    font.pixelSize: 20
+                    anchors.leftMargin: 13
+                    anchors.rightMargin: 1595
+                    font.bold: true
+                }
+
+                Row {
+                }
+
+                Row {
+                    x: 20
+                    y: 581
+                    spacing: 100
+
+                    Slider {
+                        id: sAmbientLength
+                        x: 399
+                        width: 349
+                        height: 93
+                        value: 0.5
+                    }
+
+                    Slider {
+                        id: sOpenLength
+                        x: 399
+                        width: 349
+                        height: 93
+                        value: 0.5
+                    }
+
+                    Slider {
+                        id: sClosedLength
+                        x: 399
+                        width: 349
+                        height: 93
+                        value: 0.5
+                    }
+                }
+
+                Text {
+                    id: tAmbientLengthTitle
+                    y: 559
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Ambient Length (min):")
+                    anchors.left: parent.left
+                    font.pixelSize: 20
+                    anchors.leftMargin: 27
+                }
+
+                Text {
+                    id: tAmbientLengthInt
+                    x: 251
+                    y: 559
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("2 C")
+                    font.pixelSize: 16
+                }
+
+                Text {
+                    id: tOpenLengthTitle
+                    y: 553
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Open Length (min):")
+                    anchors.left: parent.left
+                    font.pixelSize: 20
+                    anchors.leftMargin: 467
+                }
+
+                Text {
+                    id: tOpenLengthInt
+                    x: 682
+                    y: 553
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("2 C")
+                    font.pixelSize: 16
+                }
+
+                Text {
+                    id: tClosedLengthTitle
+                    y: 553
+                    height: 31
+                    color: "#47ff25"
+                    text: qsTr("Closed Length (min):")
+                    anchors.left: parent.left
+                    font.pixelSize: 20
+                    anchors.leftMargin: 925
+                }
+
+                Text {
+                    id: tClosedLengthInt
+                    x: 1152
+                    y: 553
+                    width: 60
+                    height: 31
+                    color: "#fffefe"
+                    text: qsTr("2 C")
+                    font.pixelSize: 16
                 }
             }
-
-            Text {
-                id: text8
-                y: 193
-                height: 45
-                color: "#47ff25"
-                text: qsTr("Fan Switch")
-                anchors.left: parent.left
-                anchors.right: parent.right
-                font.pixelSize: 20
-                anchors.rightMargin: 1654
-                anchors.leftMargin: 20
-            }
-
-            RadioButton {
-                id: rbFanSpeedH
-                x: 260
-                y: 224
-                width: 61
-                height: 62
-                anchors.leftMargin: 0
-                font.pointSize: 12
-                onToggled: {
-                     tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedH.text])
-                     tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedH.text])
-                     tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedH.text])
-                }
-            }
-
-            RadioButton {
-                id: rbFanSpeedM
-                x: 382
-                y: 224
-                width: 67
-                height: 62
-                anchors.leftMargin: 0
-                font.pointSize: 12
-                onToggled: {
-                     tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedM.text])
-                     tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedM.text])
-                     tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedM.text])
-                }
-            }
-
-            RadioButton {
-                id: rbFanSpeedL
-                x: 499
-                y: 224
-                width: 60
-                height: 62
-                anchors.leftMargin: 0
-                font.pointSize: 12
-                onToggled: {
-                     tFanSpeedH.font.bold = win.getBold([ tFanSpeedH.text,  tFanSpeedL.text])
-                     tFanSpeedM.font.bold = win.getBold([ tFanSpeedM.text,  tFanSpeedL.text])
-                     tFanSpeedL.font.bold = win.getBold([ tFanSpeedL.text,  tFanSpeedL.text])
-                }
-            }
-
-
-            Text {
-                id: text9
-                x: 178
-                y: 193
-                width: 149
-                height: 44
-                color: "#47ff25"
-                text: qsTr("Fan Speed")
-                font.pixelSize: 20
-            }
-
-            Slider {
-                id: slider2
-                x: 667
-                y: 215
-                width: 296
-                height: 93
-                value: 0.80
-            }
-
-            Text {
-                id: text10
-                x: 667
-                y: 199
-                width: 212
-                height: 31
-                color: "#47ff25"
-                text: qsTr("Mass Flow Controller Setpoint:")
-                font.pixelSize: 20
-            }
-
-            Text {
-                id: text11
-                x: 954
-                y: 199
-                width: 60
-                height: 31
-                color: "#fffefe"
-                text: qsTr(" 1 L/min")
-                font.pixelSize: 16
-            }
-
-
-                       Text {
-                           id: text13
-                           x: 257
-                           y: 59
-                           width: 149
-                           height: 44
-                           color: "#47ff25"
-                           text: qsTr(" Light Cycle Length")
-                           font.pixelSize: 20
-                       }
-
-
-
-                   Slider {
-                       id: sChillerSetpoint
-                       y: 349
-                       width: 349
-                       height: 93
-                       anchors.left: parent.left
-                       anchors.leftMargin: 81
-                       value: 0.5
-                       onValueChanged: {
-                           tChillerSetpoint.text = win.getValueChillerTemp(sChillerSetpoint.value)
-                       }
-                   }
-
-                   Text {
-                       id: tChillerTitle
-                       y: 325
-                       height: 31
-                       color: "#47ff25"
-                       text: qsTr("Chiller Setpoint:")
-                       anchors.left: parent.left
-                       font.pixelSize: 20
-                       anchors.leftMargin: 87
-                   }
-
-                   Slider {
-                       id: sHeaterSetpoint
-                       x: 602
-                       y: 349
-                       width: 369
-                       height: 88
-                       anchors.right: parent.right
-                       anchors.rightMargin: 129
-                       value: 0.5
-                       onValueChanged: {
-                           tHeaterSetpoint.text = win.getValueHeaterTemp(sHeaterSetpoint.value)
-                       }
-                   }
-
-                   Text {
-                       id: tHeaterTitle
-                       y: 328
-                       height: 31
-                       color: "#47ff25"
-                       text: qsTr("Heater Setpoint:")
-                       anchors.right: parent.right
-                       font.pixelSize: 20
-                       anchors.rightMargin: 213
-                   }
-
-                   Text {
-                       id: tHeaterSetpoint
-                       x: 954
-                       y: 331
-                       width: 60
-                       height: 25
-                       color: "#fffefe"
-                       text: qsTr("100 C")
-                       anchors.right: parent.right
-                       font.pixelSize: 16
-                       anchors.rightMargin: 86
-                   }
-
-                   Text {
-                       id: tChillerSetpoint
-                       x: 256
-                       y: 328
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("2 C")
-                       font.pixelSize: 16
-                   }
-
-                   Text {
-                       id: tLight12
-                       x: 317
-                       y: 118
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("12 Hour")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                   }
-
-                   Text {
-                       id: tLight3
-                       x: 563
-                       y: 118
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("3 Hour")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                   }
-
-                   Text {
-                       id: tLight6
-                       x: 451
-                       y: 118
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("6 Hour")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                   }
-
-                   Text {
-                       id: tLightOF
-                       x: 116
-                       y: 118
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("OFF")
-                       font.pixelSize: 16
-                   }
-
-                   Text {
-                       id: tFanOF
-                       x: 116
-                       y: 250
-                       width: 60
-                       height: 36
-                       color: "#fffefe"
-                       text: qsTr("OFF")
-                       font.pixelSize: 16
-                   }
-
-                   Text {
-                       id: tFanSpeedH
-                       x: 335
-                       y: 243
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("High")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                   }
-
-                   Text {
-                       id: tFanSpeedM
-                       x: 441
-                       y: 243
-                       width: 70
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("Medium")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                   }
-
-                   Text {
-                       id: tFanSpeedL
-                       x: 563
-                       y: 242
-                       width: 60
-                       height: 31
-                       color: "#fffefe"
-                       text: qsTr("Low")
-                       font.pixelSize: 16
-                       anchors.leftMargin: 0
-                       rotation: -1.874
-                   }
-           }
 
         }
 
@@ -570,6 +684,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.66;height:700;width:1200}D{i:4}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:1020;width:1850}D{i:29}D{i:40}
 }
 ##^##*/
