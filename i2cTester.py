@@ -23,7 +23,7 @@ def calibrateTC(actualTemp):
 
     print("> Calibration cleared..")
 
-    time.sleep(1.5)
+    time.sleep(0.5)
 
     print("> Calibrating to "+calTemp+"°C..")
 
@@ -44,8 +44,6 @@ def returnTemp():
     tc1.set_i2c_address(tc1Address)
     tc2.set_i2c_address(tc2Address)
 
-    time.sleep(0.4)
-
     tc1.write("R")
     tc2.write("R")
 
@@ -58,5 +56,4 @@ def returnTemp():
     tc2Reading = float((''.join(tc2.handle_raspi_glitch(tc2Response[1:])))[:6])
 
     return (tc1Reading, tc2Reading)
-
 

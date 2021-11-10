@@ -27,16 +27,35 @@ class MainWindow(QObject):
             "start": datetime.datetime.now()}
         
         self.dataHolder = {
+            "phase": "ambient",
             "time": 0,
             "temp1": 20,
             "temp2": 20
                            }
         
         self.data = pd.DataFrame()
+        
+        self.currentPhase = {"name": "ambient",
+                             "startTime": datetime.datetime.now()}
+        
+        self.currentPhaseSettings = {"ambient": 0.5*60,
+                              "open": 0.5*60,
+                              "closed": 0.5*60}
     
     def createTempPlot(self):
-        plt.plot(np.array(self.data["time"]), np.array(self.data["temp1"]), label="TC 1", c="g")
-        plt.plot(np.array(self.data["time"]), np.array(self.data["temp2"]), label="TC 2", c="b")
+        datalen = len(self.data["time"])
+        basis = 50
+        if datalen >= basis:
+            dataDen = int(datalen/basis)
+        else:
+            dataDen = 1
+        
+        temp1 = self.data["temp1"][::dataDen]
+        temp2 = self.data["temp2"][::dataDen]
+        time = self.data["time"][::dataDen]
+        
+        plt.plot(time, temp1, label="TC 1", c="g")
+        plt.plot(time, temp2, label="TC 2", c="b")
         plt.xlabel("Time [s]")
         plt.ylabel("Temperature [C]")
         plt.legend()
@@ -44,11 +63,45 @@ class MainWindow(QObject):
         plt.close()
         return True
     
+    def checkPhase(self):
+        curTime = datetime.datetime.now()
+        curDifference = (curTime - self.currentPhase["startTime"]).total_seconds()
+        if curDifference >= self.currentPhaseSettings[self.currentPhase["name"]]:
+            print("Current Phase: " + str(self.currentPhase["name"]))
+            
+            if self.currentPhase["name"] == "ambient" or self.currentPhase["name"] == "closed":
+                self.currentPhase["name"] = "open"
+                self.currentPhase["startTime"] = datetime.datetime.now()
+            
+            elif self.currentPhase["name"] == "open":
+                print("check")
+                self.currentPhase["name"] = "closed"
+                self.currentPhase["startTime"] = datetime.datetime.now()
+            print("changed Phase to: " + str(self.currentPhase["name"]))
+        return ("Check")
+            
+                
+    @Slot(str, result=bool)
+    def forcePhase(self, s):
+        if s == "ambient":
+            self.currentPhase = {"name": s,
+                                 "startTime": datetime.datetime.now()}
+        if s == "closed":
+            self.currentPhase = {"name": s,
+                                 "startTime": datetime.datetime.now()}
+        if s == "open":
+            self.currentPhase = {"name": s,
+                                 "startTime": datetime.datetime.now()}
+        return s
+    
+    @Slot(int, result=int)
+    def changePhaseSettings(self, i, s):
+        currentPhaseSettings[s] = i*60
+    
     @Slot(list, result=bool)
     def getBold(self, s):
         if s[0] == s[1]:
             print(s[1])
-
             return True
         else:
             return False
@@ -141,10 +194,22 @@ class MainWindow(QObject):
         return str(temps[1])
     
     @Slot(str, result=str)
+    def getPhaseName(self, s):
+        return self.currentPhase["name"]
+
+    @Slot(str, result=str)
+    def getPhaseTime(self, s):
+        return str(np.round(np.abs(self.currentPhase["startTime"] - datetime.datetime.now()).total_seconds(),0)) + "/" + str(self.currentPhaseSettings[self.currentPhase["name"]])
+    
+    
+    @Slot(str, result=str)
     def submitDataLine(self, s):
+        
+        currentPhase = self.checkPhase()
+        
         curTime = (datetime.datetime.now() - self.settings["start"]).total_seconds()
-        print(curTime)
         self.dataHolder["time"] = curTime
+        self.dataHolder["phase"] = self.currentPhase
         self.data = self.data.append(self.dataHolder, ignore_index=True)
         if int(curTime) % 60 ==  0 or not os.path.isfile("qml/pages/TempPlot.jpg"):
             excel_name = "Test_Data/" + self.newPath + "/Data.csv"

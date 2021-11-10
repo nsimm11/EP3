@@ -14,6 +14,8 @@ Item {
             tTemp1.text = win.getTemp1("Si")
             tTemp2.text = win.getTemp2("Si")
             tTestTime.text = win.submitDataLine("Si")
+            tPhaseType.text = win.getPhaseName("Si")
+            tPhaseTime.text = win.getPhaseTime("Si")
             
         }
     }
@@ -56,7 +58,7 @@ Item {
             }
             Text {
                 id: tTemp2
-                x: 212
+                x: 209
                 y: 145
                 width: 192
                 height: 52
@@ -88,7 +90,7 @@ Item {
 
             Text {
                 id: tTemp4
-                x: 11
+                x: 8
                 y: 145
                 width: 192
                 height: 52
@@ -107,7 +109,88 @@ Item {
                 text: qsTr("Test Time:")
                 font.pixelSize: 35
             }
-
+            Text {
+                id: tPhaseType
+                x: 209
+                y: 200
+                width: 276
+                height: 48
+                color: "#ffffff"
+                text: qsTr("PHASE")
+                font.pixelSize: 35
+            }
+            Text {
+                id: tPhaseTime
+                x: 209
+                y: 250
+                width: 276
+                height: 48
+                color: "#ffffff"
+                text: qsTr("TIME")
+                font.pixelSize: 35
+            }
+             Text {
+                id: tPhaseTimeTitle
+                x: 8
+                y: 250
+                width: 276
+                height: 48
+                color: "#ffffff"
+                text: qsTr("Phase Time:")
+                font.pixelSize: 35
+            }
+             Text {
+                id: tPhaseTitle
+                x: 8
+                y: 200
+                width: 276
+                height: 48
+                color: "#ffffff"
+                text: qsTr("Phase:")
+                font.pixelSize: 35
+            }
+            
+            Button {
+                    id: bChangeAmbient
+                    x: 400
+                    y: 200
+                    width: 258
+                    height: 40
+                    text: qsTr("Ambient")
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            win.forcePhase("ambient")
+                        }}
+                }
+                            Button {
+                    id: bChangeOpen
+                    x: 700
+                    y: 200
+                    width: 258
+                    height: 40
+                    text: qsTr("Open")
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            win.forcePhase("open")
+                        }}
+                }
+                            Button {
+                    id: bChangeClosed
+                    x: 1000
+                    y: 200
+                    width: 258
+                    height: 40
+                    text: qsTr("Closed")
+ 
+                    font.pointSize: 15
+                    onClicked: {
+                        onClicked: {
+                            win.forcePhase("closed")
+                        }}
+                }
+            
             Row {
                 id: row
                 x: 329
